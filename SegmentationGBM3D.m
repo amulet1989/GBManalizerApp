@@ -42,7 +42,7 @@ Gflair=Flair;
 % tic % initializing timer 1
 %Parameters of Whole Tumor segmentation (WT)
 Umb=3;%thresholds TC: 2, 3
-iterations=20;% Itarations number of Chan-Vese algoritm to WT
+iterations=20;% 20 Itarations number of Chan-Vese algoritm to WT
 
 %Parameters of Active Tumor segmentation (AT)
 Umb2=2;

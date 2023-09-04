@@ -28,11 +28,11 @@ matlabbatch{1}.spm.spatial.preproc.channel(4).biasreg = 0.001;
 matlabbatch{1}.spm.spatial.preproc.channel(4).biasfwhm = 60;
 matlabbatch{1}.spm.spatial.preproc.channel(4).write = [0 0];
 matlabbatch{1}.spm.spatial.preproc.tissue(1).tpm = {TPM1}; %'TPM.nii,1'
-matlabbatch{1}.spm.spatial.preproc.tissue(1).ngaus = 1;
+matlabbatch{1}.spm.spatial.preproc.tissue(1).ngaus = 2; %1
 matlabbatch{1}.spm.spatial.preproc.tissue(1).native = [1 0];
 matlabbatch{1}.spm.spatial.preproc.tissue(1).warped = [0 0];
 matlabbatch{1}.spm.spatial.preproc.tissue(2).tpm = {TPM2};%'TPM.nii,2'
-matlabbatch{1}.spm.spatial.preproc.tissue(2).ngaus = 1;
+matlabbatch{1}.spm.spatial.preproc.tissue(2).ngaus = 2; %1
 matlabbatch{1}.spm.spatial.preproc.tissue(2).native = [1 0];
 matlabbatch{1}.spm.spatial.preproc.tissue(2).warped = [0 0];
 matlabbatch{1}.spm.spatial.preproc.tissue(3).tpm = {TPM3};%'TPM.nii,3'
@@ -79,10 +79,12 @@ out=spm_jobman('run',matlabbatch, inputs{:});
 c1=niftiread(c1p{1,1});
 c2=niftiread(c2p{1,1});
 c3=niftiread(c3p{1,1});
+c4=niftiread(c4p{1,1}); % añadir otra 
+c5=niftiread(c5p{1,1});
 
 delete(c1p{1,1}, c2p{1,1}, c3p{1,1}, c4p{1,1}, c5p{1,1});
 
-brain_mask=c1+c2+c3;
+brain_mask=c1+c2+c3; % añadir otra 
 level = graythresh(brain_mask);
 BW_mask = imbinarize(brain_mask,level);
 BW_mask= imfill(BW_mask,'holes');
